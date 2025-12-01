@@ -22,6 +22,7 @@ type PWState = (Int, Int) -- (pwd, pos)
 
 password1 :: [String] -> State PWState Int
 password1 [] = gets fst
+password1 ([]:_) = error "This is invalid input"
 password1 ((d:step):ls) = do
     (pwd, pos) <- get
 
@@ -34,13 +35,14 @@ password1 ((d:step):ls) = do
 
 password2 :: [String] -> State PWState Int
 password2 [] = gets fst
+password2 ([]:_) = error "This is invalid input"
 password2 ((d:step):ls) = do
     (pwd, pos) <- get
 
     let (cycles, steps) = read step `quotRem` 100
     let newPosUnmod = pos + steps * (dirns ! d)
     let newPos = newPosUnmod `mod` 100
-    let pwdInc = if (pos > 0 && newPosUnmod < 0) || (newPosUnmod > 99 && d == 'R') || newPos == 0 then 1 else 0
+    let pwdInc = if (pos > 0 && newPosUnmod < 0) || (newPosUnmod > 99) || newPos == 0 then 1 else 0
     put (pwd + cycles + pwdInc, newPos)
 
     password2 ls
