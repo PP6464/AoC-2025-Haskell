@@ -1,0 +1,16 @@
+module Main where
+
+import System.Environment (getArgs)
+import qualified Day01
+
+main :: IO ()
+main = do
+    args <- getArgs
+    case args of
+        [dayStr, "-ti"] -> runDay (read dayStr) True
+        [dayStr]       -> runDay (read dayStr) False
+        _              -> putStrLn "Usage: haskell-aoc2025 <day> <?-ti>"
+
+runDay :: Int -> Bool -> IO ()
+runDay 1 test = Day01.main test
+runDay n _ = putStrLn $ "Day " ++ show n ++ " not implemented."

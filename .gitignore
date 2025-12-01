@@ -1,0 +1,44 @@
+# Cabal build artefacts
+/dist/
+/dist-newstyle/
+
+# Stack artefacts (if you ever use Stack)
+.stack-work/
+
+# Cabal’s local build config/state
+cabal.project.local
+cabal.project.local~
+cabal.project.freeze
+
+# GHC environment files
+.ghc.environment.*
+.ghci
+
+# HLS & tooling caches
+.hls/
+.hie/
+.hie-bios/
+
+# OS/editor noise
+*.swp
+*.swo
+*.tmp
+*~
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/
+
+# IntelliJ / Haskell plugin
+.idea/
+out/
+
+# Executables (if your project produces binaries in root)
+*.exe
+*.out
+*.o
+*.hi
+
+# AoC inputs
+inputs/*.txt
