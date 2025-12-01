@@ -8,16 +8,6 @@ import Control.Monad.State
 dirns :: Map Char Int
 dirns = Map.fromList [('L', -1), ('R', 1)]
 
--- s -> (a, s)
-
--- password :: Int -> Int -> [String] -> Int
--- password pwd _ [] = pwd 
--- password pwd pos ((d:step):ls)
---     | (pos - delta) `mod` 100  == 0 = password (pwd + 1) 0 ls
---     | otherwise = password pwd ((pos - delta) `mod` 100) ls
---     where
---         delta = (read @Int step) * (dirns ! d)
-
 type PWState = (Int, Int) -- (pwd, pos)
 
 password1 :: [String] -> State PWState Int
