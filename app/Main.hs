@@ -2,6 +2,7 @@ module Main where
 
 import System.Environment (getArgs)
 import qualified Day01
+import qualified Day02
 
 main :: IO ()
 main = do
@@ -13,4 +14,5 @@ main = do
 
 runDay :: Int -> Bool -> IO ()
 runDay 1 test = Day01.main test
+runDay 2 test = Day02.main test
 runDay n _ = putStrLn $ "Day " ++ show n ++ " not implemented."
