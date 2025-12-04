@@ -1,7 +1,7 @@
 module Day04 where
 
 import Data.Array
-import Control.Monad.RWS
+import Control.Monad.State
 
 import Utils.Input
 import Utils.List
@@ -10,29 +10,26 @@ import Utils.Grid
 accessibleRoll :: Grid Char -> (Int, Int) -> Bool
 accessibleRoll g (r, c) = g ! (r, c) == '@' && (4 > length (filter ( == '@') $ (g ! ) <$> neighbours (r, c) g))
 
-remove :: RWS (Int, Int) String (Grid Char, Int) Int
-remove = do
+remove :: Int -> Int -> State (Grid Char, Int) Int
+remove h w = do
     (grid, tot) <- get
-    (h, w) <- ask
 
-    let n = count (accessibleRoll grid . fst) (assocs grid)
+    let replacements = [((r,c), '.') | r <- 0..<h, c <- 0..<w, accessibleRoll grid (r,c)]
 
-    if n == 0 then
+    if null replacements then
         return tot
     else do
-        let grid' = array ((0, 0), (h - 1, w - 1)) (replace grid <$> assocs grid)
+        let grid' = grid // replacements
 
-        put (grid', tot + n)
+        put (grid', tot + length replacements)
 
-        remove
-    where
-        replace :: Grid Char -> ((Int, Int), Char) -> ((Int, Int), Char)
-        replace g (i, '.') = (i, '.')
-        replace g (i, _) = if accessibleRoll g i then (i, '.') else (i, '@') 
+        remove h w
 
 main :: Bool -> IO ()
 main test = do
     input <- selectInput 4 test
     let grid = parseGrid input
-    putStrLn $ "Part 1: " ++ show (length $ filter (accessibleRoll grid . fst) (assocs grid))
-    putStrLn $ "Part 2: " ++ show (fst $ evalRWS remove (height grid, width grid) (grid, 0))
+    let h = height grid
+    let w = width grid
+    putStrLn $ "Part 1: " ++ show (length [0 | r <- 0..<h, c <- 0..<w, accessibleRoll grid (r, c)])
+    putStrLn $ "Part 2: " ++ show (evalState (remove h w) (grid, 0))

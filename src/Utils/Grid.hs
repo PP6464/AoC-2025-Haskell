@@ -8,10 +8,10 @@ a ..< b = [a..(b - 1)]
 type Grid a = Array (Int, Int) a
 
 height :: Grid a -> Int
-height = (+1) . fst . fst . last . assocs
+height = (+1) . fst . snd . bounds
 
 width :: Grid a -> Int
-width = (+1) . snd . fst . last . assocs
+width = (+1) . snd . snd . bounds
 
 -- Gets the neighbouring indices for a given index
 neighbours :: (Int, Int) -> Grid a -> [(Int, Int)]
