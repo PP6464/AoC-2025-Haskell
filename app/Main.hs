@@ -4,6 +4,7 @@ import System.Environment (getArgs)
 import qualified Day01
 import qualified Day02
 import qualified Day03
+import qualified Day04
 
 main :: IO ()
 main = do
@@ -17,4 +18,5 @@ runDay :: Int -> Bool -> IO ()
 runDay 1 test = Day01.main test
 runDay 2 test = Day02.main test
 runDay 3 test = Day03.main test
+runDay 4 test = Day04.main test
 runDay n _ = putStrLn $ "Day " ++ show n ++ " not implemented."

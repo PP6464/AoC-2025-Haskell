@@ -59,7 +59,7 @@ library
     import:           warnings
 
     -- Modules exported by the library.
-    exposed-modules:  Utils.Input, Day01, Day02, Day03
+    exposed-modules:  Utils.Input, Utils.Grid, Day01, Day02, Day03, Day04
 
     -- Modules included in this library but not exported.
     -- other-modules:
@@ -69,7 +69,7 @@ library
 
     -- Other library packages from which modules are imported.
     build-depends:    mtl ^>=2.3.1, base ^>=4.18.3.0, containers,
-                      split ^>=0.2.5
+                      split ^>=0.2.5, array ^>= 0.5.8.0
 
 
     -- Directories containing source files.
