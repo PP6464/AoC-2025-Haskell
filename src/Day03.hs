@@ -2,6 +2,7 @@ module Day03 where
 import Utils.Input
 import Data.Bifunctor (Bifunctor(second))
 import Control.Monad.State
+import Data.Char (digitToInt)
 
 -- (max element, index)
 maxWithIndex :: Ord a => [a] -> (a, Int)
@@ -25,7 +26,7 @@ joltage n = evalState (joltage' 0) . (0,)
                 joltage' (digs + 1)
 
 banks :: [String] -> [[Int]] 
-banks = ((read @Int . (:[]) <$> ) <$> ) 
+banks = ((digitToInt <$> ) <$> ) 
 
 main :: Bool -> IO ()
 main test = do
