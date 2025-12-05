@@ -2,8 +2,7 @@ module Utils.Grid where
 
 import Data.Array
 
-(..<) :: Int -> Int -> [Int]
-a ..< b = [a..(b - 1)]
+import Utils.List
 
 type Grid a = Array (Int, Int) a
 

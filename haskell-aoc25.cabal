@@ -59,7 +59,7 @@ library
     import:           warnings
 
     -- Modules exported by the library.
-    exposed-modules:  Utils.Input, Utils.Grid, Day01, Day02, Day03, Day04
+    exposed-modules:  Utils.Input, Utils.List, Utils.Grid, Day01, Day02, Day03, Day04, Day05
 
     -- Modules included in this library but not exported.
     -- other-modules:
