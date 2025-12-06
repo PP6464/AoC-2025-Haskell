@@ -1,7 +1,6 @@
 module Day06 where
 
 import Utils.Input
-import Utils.List
 import Utils.String
 
 import Data.List
