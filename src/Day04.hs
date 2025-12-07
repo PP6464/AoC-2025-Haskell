@@ -31,5 +31,5 @@ main test = do
     let grid = parseGrid input
     let h = height grid
     let w = width grid
-    putStrLn $ "Part 1: " ++ show (length [0 | r <- 0..<h, c <- 0..<w, accessibleRoll grid (r, c)])
+    putStrLn $ "Part 1: " ++ show (length [(0 :: Int) | r <- 0..<h, c <- 0..<w, accessibleRoll grid (r, c)])
     putStrLn $ "Part 2: " ++ show (evalState (remove h w) (grid, 0))
