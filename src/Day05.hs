@@ -12,10 +12,10 @@ parseInput :: [String] -> ([(Int, Int)], [Int])
 parseInput input = bimap (map parseRange) (map read) (parseInput' input False [] [])
     where
         parseInput' [] _ f s = (f, s)
-        parseInput' ("":input) False f s = parseInput' input True f s
-        parseInput' (i:input) b f s
-            | b = parseInput' input b f (i : s)
-            | otherwise = parseInput' input b (i : f) s
+        parseInput' ("":is) False f s = parseInput' is True f s
+        parseInput' (i:is) b f s
+            | b = parseInput' is b f (i : s)
+            | otherwise = parseInput' is b (i : f) s
 
 -- turns "a-b" into (a, b)
 parseRange :: String -> (Int, Int)
