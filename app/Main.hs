@@ -7,6 +7,7 @@ import qualified Day03
 import qualified Day04
 import qualified Day05
 import qualified Day06
+import qualified Day07
 
 main :: IO ()
 main = do
@@ -23,4 +24,5 @@ runDay 3 = Day03.main
 runDay 4 = Day04.main
 runDay 5 = Day05.main
 runDay 6 = Day06.main
+runDay 7 = Day07.main
 runDay n = \_ -> putStrLn ("Day " ++ show n ++ " not implemented.")
