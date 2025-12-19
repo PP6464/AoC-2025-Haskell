@@ -60,7 +60,8 @@ library
 
     -- Modules exported by the library.
     exposed-modules:  Utils.Input, Utils.List, Utils.Grid, Utils.String,
-                      Day01, Day02, Day03, Day04, Day05, Day06, Day07
+                      Day01, Day02, Day03, Day04, Day05, Day06, Day07, Day08,
+                      Day09
 
     -- Modules included in this library but not exported.
     -- other-modules:
@@ -71,7 +72,7 @@ library
     -- Other library packages from which modules are imported.
     build-depends:    mtl ^>=2.3.1, base ^>=4.18.3.0, containers,
                       split ^>=0.2.5, array ^>=0.5.8.0, text ^>=2.0.2,
-                      multiset ^>=0.3.4.3
+                      multiset ^>=0.3.4.3, extra ^>=1.8
 
 
     -- Directories containing source files.
